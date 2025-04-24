@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { createFilmeSchema } from "../schema/filme.schema";
 import { FilmeService } from "../service/filmeService";
+import { Filme } from "../../generated/prisma";
 
 const filmeService = FilmeService;
 export const FilmeController = {
@@ -27,6 +28,14 @@ export const FilmeController = {
       res.status(200).json(deleteFilme);
     } catch (error: any) {
       res.status(400).json({ message: error.message });
+    }
+  },
+  async findAll(req: Request, res: Response) {
+    try {
+      const findFilme: Filme[] = await filmeService.findAll();
+      res.status(200).json(findFilme);
+    } catch (error: any) {
+      res.status(404).json({ message: error.message });
     }
   },
 };

@@ -9,4 +9,7 @@ router.post("/filme", filmeController.create);
 
 //rota de deletar filme por id
 router.delete("/filme/:id", filmeController.delete);
+
+// rota de buscar todos filmes 
+router.get("/filme", filmeController.findAll);
 export default router;
