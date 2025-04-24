@@ -10,6 +10,17 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+
+model Filme {
+  id              String   @id @default(uuid()) //default gera automatico
+  titulo          String
+  genero          String  // sem ? , quer dizer obrigatorio!
+  duracao         Int
+  data_lancamento DateTime
+  criado_em       DateTime @default(now())
+
 }
