@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts"
+  },
   "devDependencies": {
     "@types/express": "^5.0.1",
     "ts-node-dev": "^2.0.0",
@@ -10,6 +13,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
+    "ApiFilmeTesteTecnico": "file:",
     "express": "^5.1.0",
     "prisma": "^6.6.0",
     "zod": "^3.24.3"
