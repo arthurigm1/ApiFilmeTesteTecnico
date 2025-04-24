@@ -21,4 +21,12 @@ export const FilmeController = {
       res.status(400).json({ message: error.message });
     }
   },
+  async delete(req: Request, res: Response) {
+    try {
+      const deleteFilme = await filmeService.delete(req.params.id);
+      res.status(200).json(deleteFilme);
+    } catch (error: any) {
+      res.status(400).json({ message: error.message });
+    }
+  },
 };
