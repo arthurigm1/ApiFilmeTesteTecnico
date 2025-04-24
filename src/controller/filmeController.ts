@@ -18,7 +18,6 @@ export const FilmeController = {
 
       res.status(201).json(newFilme);
     } catch (error: any) {
-      console.log(error);
       res.status(400).json({ message: error.message });
     }
   },
@@ -61,9 +60,8 @@ export const FilmeController = {
   },
   async findbyTitulo(req: Request, res: Response) {
     try {
-      console.log("this");
+
       const findbyTitulo = await filmeService.findbyTitulo(req.params.titulo);
-      console.log(req.params.titulo);
       res.status(200).json(findbyTitulo);
     } catch (error: any) {
       res.status(404).json({ message: error.message });
