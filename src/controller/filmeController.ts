@@ -38,4 +38,13 @@ export const FilmeController = {
       res.status(404).json({ message: error.message });
     }
   },
+
+  async findbyId(req: Request, res: Response) {
+    try {
+      const findFilme = await filmeService.findbyId(req.params.id);
+      res.status(200).json(findFilme);
+    } catch (error: any) {
+      res.status(404).json({ message: error.message });
+    }
+  },
 };
