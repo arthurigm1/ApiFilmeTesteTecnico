@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createFilmeSchema } from "../schema/filme.schema";
+import { createFilmeSchema, updateFilmeSchema } from "../schema/filme.schema";
 import { FilmeService } from "../service/filmeService";
 import { Filme } from "../../generated/prisma";
 
@@ -52,7 +52,17 @@ export const FilmeController = {
   },
   async update(req: Request, res: Response) {
     try {
-      const updateFilme = await filmeService.update(req.params.id, req.body);
+      const data = updateFilmeSchema.parse(req.body);
+
+      // Constrói dinamicamente apenas os campos que vierem no body
+      const updateData: any = {
+        ...data,
+        ...(data.data_lancamento && {
+          data_lancamento: new Date(data.data_lancamento),
+        }),
+      };
+
+      const updateFilme = await filmeService.update(req.params.id, updateData);
       res.status(200).json(updateFilme);
     } catch (error: any) {
       res.status(404).json({ message: error.message });
@@ -60,7 +70,6 @@ export const FilmeController = {
   },
   async findbyTitulo(req: Request, res: Response) {
     try {
-
       const findbyTitulo = await filmeService.findbyTitulo(req.params.titulo);
       res.status(200).json(findbyTitulo);
     } catch (error: any) {
