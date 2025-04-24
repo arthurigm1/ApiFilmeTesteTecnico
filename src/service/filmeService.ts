@@ -1,5 +1,5 @@
+import { NotFoundException } from "../exception/NotFoundException";
 import { FilmeModel } from "../models/filmeModel";
-
 
 // poderia importar o filme model como java private repository: FilmeRepository = new FilmeRepository(); dos dois jeitos testados e funcional
 const filmemodel = FilmeModel;
@@ -20,6 +20,7 @@ export const FilmeService = {
     if (filme !== null) {
       return await filmemodel.delete(id);
     } else {
+      throw new NotFoundException("Filme nao existe com este ID");
     }
   },
 

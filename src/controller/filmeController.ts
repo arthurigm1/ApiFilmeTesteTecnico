@@ -27,7 +27,11 @@ export const FilmeController = {
       const deleteFilme = await filmeService.delete(req.params.id);
       res.status(200).json(deleteFilme);
     } catch (error: any) {
-      res.status(400).json({ message: error.message });
+      if (error.name === "NotFoundError") {
+        res.status(404).json({ message: error.message });
+      } else {
+        res.status(400).json({ message: error.message });
+      }
     }
   },
   async findAll(req: Request, res: Response) {
