@@ -1,6 +1,6 @@
 import prismaClient from "../prisma/prismaclient";
 
- // poderia usar FilmeModel como class , mais parecido com java, e oop , export class filmeModel{}
+// poderia usar FilmeModel como class , mais parecido com java, e oop , export class filmeModel{}
 export const FilmeModel = {
   async create(data: {
     titulo: string;
@@ -8,8 +8,7 @@ export const FilmeModel = {
     duracao: number;
     data_lancamento: Date;
   }) {
-    const dt = await prismaClient.filme.create({ data });
-    return dt;
+    return await prismaClient.filme.create({ data });
   },
   async delete(id: string) {
     return await prismaClient.filme.delete({
