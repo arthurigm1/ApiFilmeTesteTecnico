@@ -1,6 +1,10 @@
 import { FilmeModel } from "../models/filmeModel";
 
+
+// poderia importar o filme model como java private repository: FilmeRepository = new FilmeRepository(); dos dois jeitos testados e funcional
 const filmemodel = FilmeModel;
+
+// poderia ser uma classe tambem export class FilmeService{metodos} igual java
 export const FilmeService = {
   async create(data: {
     titulo: string;

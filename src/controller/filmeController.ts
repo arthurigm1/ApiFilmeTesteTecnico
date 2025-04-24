@@ -10,7 +10,7 @@ export const FilmeController = {
 
       const newFilme = await filmeService.create({
         data_lancamento: new Date(data.data_lancamento),
-        titulo: data.title,
+        titulo: data.titulo,
         genero: data.genero,
         duracao: data.duracao,
       });
