@@ -15,4 +15,11 @@ router.get("/filme", filmeController.findAll);
 
 //rota de buscar filme por id
 router.get("/filme/:id", filmeController.findbyId);
+
+//rota de editar filme pelo id
+router.put("/filme/:id", filmeController.update);
+
+//rota de buscar filme pelo titulo
+//pensar em uma alterntiva melhor
+router.get("/filme/titulo/:titulo", filmeController.findbyTitulo);
 export default router;

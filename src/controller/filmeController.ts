@@ -47,4 +47,22 @@ export const FilmeController = {
       res.status(404).json({ message: error.message });
     }
   },
+  async update(req: Request, res: Response) {
+    try {
+      const updateFilme = await filmeService.update(req.params.id, req.body);
+      res.status(200).json(updateFilme);
+    } catch (error: any) {
+      res.status(404).json({ message: error.message });
+    }
+  },
+  async findbyTitulo(req: Request, res: Response) {
+    try {
+      console.log("this");
+      const findbyTitulo = await filmeService.findbyTitulo(req.params.titulo);
+      console.log(req.params.titulo);
+      res.status(200).json(findbyTitulo);
+    } catch (error: any) {
+      res.status(404).json({ message: error.message });
+    }
+  },
 };
