@@ -12,7 +12,7 @@ API RESTful desenvolvida como parte de um teste técnico para vaga de Estágio B
 - **Prisma ORM**
 - **SQLite**
 - **Zod** (validação de dados)
-- **Dotenv**
+
 
 ---
 
